@@ -3,12 +3,19 @@
  */
 package BoogieB;
 
+import org.apache.catalina.Server;
+
 public class App {
     public String getGreeting() {
-        return "Hello World!";
+        return "Welcome to the Boogie Bee, Baby!";
     }
 
     public static void main(String[] args) {
+        BoogieRepo boogieRepo = new BoogieRepo("pokedex.csv");
+        BoogieService boogieService = new BoogieService(boogieRepo);
+        BoogieServer boogieServer = new Server(boogieService);
+
         System.out.println(new App().getGreeting());
+
     }
 }
